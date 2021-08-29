@@ -25,8 +25,8 @@ export function grid(state = cloneDeep(initialState), action) {
                         val,
                         ...state[row].slice(col + 1)
                     ]; //not using splice as it mutates the state
-                    window.gridHistory.push(state);
-                    // grid.push(state);
+                gridHistory.push(state);
+                    grid.push(state);
                     return [
                         ...state.slice(0,row),
                         changedRow,
@@ -41,7 +41,7 @@ export function grid(state = cloneDeep(initialState), action) {
                     window.gridHistory = [];
                     return cloneDeep(initialState);
             case 'UNDO':
-                    let lastState = window.gridHistory.splice(window.gridHistory.length -1,1);
+                    let lastState = window.gridHistory.splice(gridHistory.length -1,1);
                     return lastState[0];
             default:
                     return state;
