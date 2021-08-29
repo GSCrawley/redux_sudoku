@@ -31,14 +31,14 @@ const getBoxColor = (row, col) => {
 
 /* Box Component */
 
-const Box = React.createClass({
+class Box extends React.Component {
     componentWillMount() {
         const {val} = this.props;
         this.setState({isFixed: val ? true : false});
-    },
+    }
     shouldComponentUpdate(nextProps, nextState) {
         return nextProps.val !== this.props.val;
-    },
+    }
     handleChange(e){
         const {row, col, store} = this.props;
         const range = [1,2,3,4,5,6,7,8,9];
@@ -48,7 +48,7 @@ const Box = React.createClass({
         if (range.indexOf(val) > -1 || isDeleted) {
             store.dispatch(inputValue(row, col, isDeleted ? 0 : val));
         }
-    },
+    }
     render() {
         const {row, col, val, isSolved} = this.props;
         const {isFixed} = this.setState;
@@ -83,6 +83,6 @@ const Box = React.createClass({
             </td>
         );    
     }
-});
+};
 
 export default Box;

@@ -1,15 +1,15 @@
 import React from 'react';
 import Grid from './components/Grid';
-import { solver, isSolvable, isComplete } from './utils/sudoku';
+import { isSolvable, isComplete } from './utils/sudoku';
 import { solve, clear, undo} from './actions/grid';
 
-const App = React.createClass({
+class App extends React.Component {
     componentDidMount(){
         this.unsubscribe = this.props.store.unsubscribe(() => {
         this.forceUpdate();
     })
-},
-    render() {
+}
+    render(){
         const {store} = this.props;
         const {grid, status} = store.getState();
         const {isSolved, isEdited} = status;
@@ -61,6 +61,6 @@ const App = React.createClass({
         </div>
         );
     }
-});
+};
 
 export default App;
