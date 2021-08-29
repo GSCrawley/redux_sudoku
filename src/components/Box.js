@@ -50,7 +50,7 @@ const Box = React.createClass({
         }
     },
     render() {
-        const {row, col, val, isSolved = this.props;
+        const {row, col, val, isSolved} = this.props;
         const {isFixed} = this.setState;
         const input = (
             <input
@@ -81,7 +81,7 @@ const Box = React.createClass({
                     input
                     }
             </td>
-        );
+        );    
     }
 });
 
