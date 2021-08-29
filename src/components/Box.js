@@ -40,7 +40,7 @@ class Box extends React.Component {
         return nextProps.val !== this.props.val;
     }
     handleChange(e){
-        const {row, col, store} = this.props;
+        const {row, col, store} = this.props.e;
         const range = [1,2,3,4,5,6,7,8,9];
         const val = parseInt(e.target.value);
         const isDeleted = e.target.value === '';
