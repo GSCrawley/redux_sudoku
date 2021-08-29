@@ -5,10 +5,13 @@ import { solve, clear, undo} from './actions/grid';
 
 class App extends React.Component {
     componentDidMount(){
-        this.unsubscribe = this.props.store.unsubscribe(() => {
-        this.forceUpdate();
-    })
-}
+        this.unsubscribe = this.props.store.subscribe(() => {
+			this.forceUpdate();
+		})
+	}
+	componentWillUnmount() {
+		this.unsubscribe();
+	}
     render(){
         const {store} = this.props;
         const {grid, status} = store.getState();
