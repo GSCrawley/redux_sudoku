@@ -32,15 +32,15 @@ const getBoxColor = (row, col) => {
 /* Box Component */
 
 class Box extends React.Component {
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         const {val} = this.props;
         this.setState({isFixed: val ? true : false});
     }
     shouldComponentUpdate(nextProps, nextState) {
         return nextProps.val !== this.props.val;
     }
-    handleChange(e){
-        const {row, col, store} = this.props.e;
+    handleChange = (e) => {
+        const {row, col, store} = this.props;
         const range = [1,2,3,4,5,6,7,8,9];
         const val = parseInt(e.target.value);
         const isDeleted = e.target.value === '';
