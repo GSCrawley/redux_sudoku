@@ -23,6 +23,6 @@ export function clear() {
 
 export function undo() {
         return {
-                tye: 'UNDO'
-        }
+                type: 'UNDO'
+        };
 }

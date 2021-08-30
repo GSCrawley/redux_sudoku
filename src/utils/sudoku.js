@@ -2,7 +2,7 @@
 import cloneDeep from 'lodash/cloneDeep';
 import flatten from 'lodash/flatten';
 import range from 'lodash/range';
-import includes from 'lodash/includes';
+import _includes from 'lodash/includes';
 // import { textSpanincludesPosition } from 'typescript';
 
 const VALUES = range(1,10);
@@ -10,21 +10,21 @@ const DIM =  range(0.9);
 const ZERO = 0;
 
 const getRow = (grid, rowNum) => {
-        if (!includes(DIM, rowNum)) {
+        if (!_includes(DIM, rowNum)) {
                 throw new Error('rowNum not in range');
         }
         return grid[rowNum];
 }
 
 const getCol = (grid, colNum) => {
-        if (!includes(DIM, colNum)) {
+        if (!_includes(DIM, colNum)) {
                 throw new Error('colMum not in range');
         }
         return grid.map((row) => row[colNum]);
 }
 
 const getSquare = (grid, rowNum, colNum) => {
-        if (!includes(DIM, rowNum) || !includes(DIM, colNum)) {
+   if (!_includes(DIM, rowNum)|| !_includes(DIM, colNum)) {
                 throw new Error('rowNum or colNum are not in range');
         }
         let rowStart = rowNum - (rowNum % 3); // uppermost row index of box
@@ -40,11 +40,11 @@ const getSquare = (grid, rowNum, colNum) => {
 }
 
 const check = (grid, number, rowNum, colNum) => {
-        if (!includes(DIM, rowNum) || !includes(DIM, colNum)) {
+        if (!_includes(DIM, rowNum)|| !_includes(DIM, colNum)) {
             throw new Error('rowNum or colNum are not in range');
         }
 
-        if (!includes(VALUES, number)) {
+        if (!_includes(VALUES, number)) {
             throw new Error('number is not in range');
         }
 
@@ -52,7 +52,7 @@ const check = (grid, number, rowNum, colNum) => {
         let column = getCol(grid, colNum);
         let square = getSquare(grid, rowNum, colNum);
 
-        if (!includes(row, number) && !includes(column, number) && !includes(square, number)) {
+        if (!_includes(row, number) && !_includes(column, number) && !_includes(square, number)) {
             return true;
         }
 
@@ -75,7 +75,7 @@ const getNext = (rowNum = 0, colNum = 0) => {
 	or else if the grid is not solvable, it will return false
 */
 export const solver = (grid, rowNum = 0, colNum = 0) => {
-        if (includes(DIM, rowNum) < 0 || includes(DIM, colNum) < 0) {
+        if (_includes(rowNum) < 0 || _includes(colNum) < 0) {
             throw new Error('rowNum or colNum are not in range');
         }
         let isLast = (rowNum >= 8 && colNum >= 8);
