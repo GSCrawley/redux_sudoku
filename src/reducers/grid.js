@@ -1,3 +1,4 @@
+// import { constant } from 'lodash';
 import cloneDeep from 'lodash/cloneDeep';
 // import { default as extend } from 'lodash/assignIn';
 import { solver } from '../utils/sudoku';
@@ -16,7 +17,7 @@ const initialState = [
 
 window.gridHistory =  window.gridHistory || [];
 
-export function grid(state = cloneDeep(initialState), action) {
+export const grid = (state = cloneDeep(initialState), action) => {
     switch (action.type) {
             case 'INPUT_VALUE': 
                     let {row, col, val} = action;
@@ -24,13 +25,12 @@ export function grid(state = cloneDeep(initialState), action) {
                         ...state[row].slice(0,col),
                         val,
                         ...state[row].slice(col + 1)
-                    ]; //not using splice as it mutates the state
-                window.gridHistory.push(state);
-                    grid.push(state);
-                    return [
-                        ...state.slice(0,row),
-                        changedRow,
-                        ...state.slice(row+1)
+                    ]; 
+                    window.gridHistory.push(state);
+                        return [
+                            ...state.slice(0,row),
+                            changedRow,
+                            ...state.slice(row+1)
                     ];
             case 'SOLVE':
                     let originalClone = cloneDeep(initialState);
