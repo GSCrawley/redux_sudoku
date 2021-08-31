@@ -10,23 +10,23 @@ const DIM =  range(0.9);
 const ZERO = 0;
 
 const getRow = (grid, rowNum) => {
-        if (!_includes(DIM, rowNum)) {
-                throw new Error('rowNum not in range');
-        }
+        // if (!_includes(DIM, rowNum)) {
+        //         throw new Error('rowNum not in range');
+        // }
         return grid[rowNum];
 }
 
 const getCol = (grid, colNum) => {
-        if (!_includes(DIM, colNum)) {
-                throw new Error('colMum not in range');
-        }
+        // if (!_includes(DIM, colNum)) {
+        //         throw new Error('colMum not in range');
+        // }
         return grid.map((row) => row[colNum]);
 }
 
 const getSquare = (grid, rowNum, colNum) => {
-   if (!_includes(DIM, rowNum)|| !_includes(DIM, colNum)) {
-                throw new Error('rowNum or colNum are not in range');
-        }
+//    if (!_includes(DIM, rowNum)|| !_includes(DIM, colNum)) {
+//                 throw new Error('rowNum or colNum are not in range');
+//         }
         let rowStart = rowNum - (rowNum % 3); // uppermost row index of box
         let colStart = colNum - (colNum % 3); // leftmost col index of box
         let result = [];
@@ -40,9 +40,9 @@ const getSquare = (grid, rowNum, colNum) => {
 }
 
 const check = (grid, number, rowNum, colNum) => {
-        if (!_includes(DIM, rowNum)|| !_includes(DIM, colNum)) {
-            throw new Error('rowNum or colNum are not in range');
-        }
+        // if (!_includes(DIM, rowNum)|| !_includes(DIM, colNum)) {
+        //     throw new Error('rowNum or colNum are not in range');
+        // }
 
         if (!_includes(VALUES, number)) {
             throw new Error('number is not in range');
@@ -74,6 +74,7 @@ const getNext = (rowNum = 0, colNum = 0) => {
 	the end of the grid and returns true
 	or else if the grid is not solvable, it will return false
 */
+
 export const solver = (grid, rowNum = 0, colNum = 0) => {
         if (_includes(rowNum) < 0 || _includes(colNum) < 0) {
             throw new Error('rowNum or colNum are not in range');
